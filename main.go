@@ -24,6 +24,15 @@ like in pkg/http package. See ErrorNotImplemented in pkg/http.
 in NoDefinitionErrorFunction function
 */
 
+func NewError(msg string, errs ...error) error {
+	formatstr := ""
+	for range errs {
+		formatstr += "%w: "
+	}
+	formatstr += "%s"
+	return fmt.Errorf(formatstr, errs, msg)
+}
+
 func ReallyBadFunction(timeout int) error {
 	if timeout%2 == 0 {
 		return &communication.TimeoutError{
