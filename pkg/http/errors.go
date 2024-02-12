@@ -8,6 +8,7 @@ import (
 var (
 	ErrorHttp           = errors.New("http error")
 	ErrorNotImplemented = fmt.Errorf("%w: not implemented", ErrorHttp)
+	ErrorNotAuthorized  = fmt.Errorf("%w: not autorized", ErrorHttp)
 )
 
 type ServerError struct {
